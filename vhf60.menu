@@ -1,0 +1,569 @@
+'(
+name: vhflinux
+label: "VHF Linux 6.0"
+value_tab:48
+
+parameter: sockPort
+text: "Socket number"
+type: typein:
+type_desc: ( int: 7 1024 nil )
+value: 9000
+mouse_text: "Enter socket number must be larger than 1024."
+
+parameter: dbaseParm
+text: "Have you create database?"
+type: boolean:
+value: nil
+mouse_text: "Select 'Yes' if the database available." 
+
+parameter: lmin
+text: "Minimum inline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: -9876545
+mouse_text: "Enter minimum inline number to process."
+plot_label: t
+
+parameter: lmax
+text: "Maximum inline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: -9876545
+mouse_text: "Enter maximum inline number to process."
+plot_label: t
+
+parameter: xmin
+text: "Minimum crossline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: -9876545
+mouse_text: "Enter minimum crossline number to process."
+plot_label: t
+
+parameter: xmax
+text: "Maximum crossline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: -9876545
+mouse_text: "Enter maximum crossline number to process."
+plot_label: t
+
+parameter: lmin1
+text: "Minimum inline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1
+mouse_text: "Enter minimum inline number to process."
+
+parameter: lmax1
+text: "Maximum inline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 9999
+mouse_text: "Enter maximum inline number to process."
+
+parameter: xmin1
+text: "Minimum crossline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1
+mouse_text: "Enter minimum crossline number to process."
+
+parameter: xmax1
+text: "Maximum crossline number to process"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 9999
+mouse_text: "Enter maximum crossline number to process."
+
+parameter: samples
+text: "Sample for a trace"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1000
+mouse_text: "Sample for a trace."
+
+parameter: sampleRate
+text: "Sample rate for the survey"
+type: typein:
+type_desc: ( float: 7 1.0 nil )
+value: 2.0
+mouse_text: "Enter sample rate for the survey."
+
+parameter: headers
+text: "Header size for the survey"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 68
+mouse_text: "Enter header size for the survey."
+
+parameter: minCDP
+text: "Minimum CDP for the survey"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1
+mouse_text: "Enter minimum CDP for the survey."
+
+parameter: maxCDP
+text: "Maximum CDP for the survey"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 9999
+mouse_text: "Enter maximum CDP for the survey."
+
+parameter: minIlin
+text: "Minimum inline number for the survey"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1
+mouse_text: "Enter minimum inline number for the survey."
+
+parameter: maxIlin
+text: "Maximum inline number for the survey."
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 9999
+mouse_text: "Enter maximum inline number for the survey."
+
+parameter: minXlin
+text: "Minimum crossline number for the survey"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 1
+mouse_text: "Enter minimum crossline number for the survey."
+
+parameter: maxXlin
+text: "Maximum crossline number for the survey."
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 9999
+mouse_text: "Enter maximum crossline number for the survey."
+
+parameter: tleng
+text: "Length of operator time window (ms)"
+type: typein:
+type_desc: ( int: 7 200 nil )
+value: 1000
+mouse_text: "Enter length of operator time window"
+
+parameter: taper
+text: "Window taper between windows (ms)"
+type: typein:
+type_desc: ( int: 7 0 400 )
+value: 200
+mouse_text: "Window taper between windows (ms)."
+
+parameter: fxyF
+text: "Doing fxy decon filter?"
+type: pop_choose:
+type_desc: (
+   ("Yes" 1 "Doing fxy decon filter." ) 
+   ("No" 0 "Not fxy decon filter." ) )
+selected_item:  ("Fxy decon filter" 1 "Doing fxy decon filter." )
+mouse_text: "Doing fxy decon filter or not." 
+
+parameter: numDesiF
+text: "Number of lines using for fxy filter design"
+type: typein:
+type_desc: ( int: 7 9 60 )
+value: 21
+mouse_text: "Enter number of lines using for fxy filter. min=9, max=60"
+
+parameter: numFilt
+text: "Number of lines using for fxy filter"
+type: typein:
+type_desc: ( int: 7 3 7 )
+value: 3
+mouse_text: "Number of lines using for fxy filter. values can be 3,5,7"
+
+parameter: overlapF
+text: "Overlap between FXY group"
+type: typein:
+type_desc: ( int: 7 3 29 )
+value: 3
+mouse_text: "Overlap between FXY group."
+
+parameter: radonF
+text: "Radon high dip filter?"
+type: pop_choose:
+type_desc: (
+   ("no" 0 "Not using radon filter." ) 
+   ("inline" 1 "Doing inline direction radon filter." ) 
+   ("xline" 2 "Doing xline direction radon filter." ) 
+   ("two pass" 3 "Doing inline & xline radon filter." ) 
+   ("one pass" 4 "Doing 3D radon filter." )) 
+selected_item:  ("no" 0 "Not radon high dip filter." )
+mouse_text: "Popup memu choosing different Radon filter." 
+
+parameter: ixSame
+text: "The parms are the same of inline & xline?"
+type: pop_choose:
+type_desc: (
+   ("Yes   " 1 " The same." ) 
+   ("No  " 0 "Not same." ) )
+selected_item:  ("The same" 1 "parms are the same." )
+mouse_text: "Parms are the same or not in inline & xline." 
+
+parameter: method
+text: "Which method for Radon filter?"
+type: pop_choose:
+type_desc: (
+   ("method1" 0 "Faster and noisy." ) 
+   ("method2" 1 "Slower and clean." )) 
+selected_item:  ("method1" 0 "method1 used for Radon filter." )
+mouse_text: "Popup memu choosing different Radon filter." 
+
+parameter: numDesiI
+text: "Lines for Radon filter in inline direction."
+type: typein:
+type_desc: ( int: 7 9 60 )
+value: 21
+mouse_text: "Enter number of xlines using for inline direction radon filter design. 9~60"
+
+parameter: dipI
+text: "Dip (ms/trace) in inline direction"
+type: typein:
+type_desc: ( int: 7 4 nil )
+value: 12
+mouse_text: "Dip (ms/trace) in inline direction using."
+
+parameter: overlapI
+text: "Overlap for inline direction"
+type: typein:
+type_desc: ( int: 7 3 29 )
+value: 3
+mouse_text: "Overlap between Radon group for inline direction."
+
+parameter: numDesiX
+text: "Xline number for Radon xline direction."
+type: typein:
+type_desc: ( int: 7 9 60 )
+value: 21
+mouse_text: "Enter number of xlines using for xline direction radon filter. from 9 to 60"
+
+parameter: dipX
+text: "Dip (ms/trace) in xline direction."
+type: typein:
+type_desc: ( int: 7 4 nil )
+value: 12
+mouse_text: "Dip (ms/trace) in xline direction using in radon filter."
+
+parameter: overlapX
+text: "Overlap in xline direction"
+type: typein:
+type_desc: ( int: 7 3 29 )
+value: 3
+mouse_text: "Overlap between Radon group for xline direction."
+
+parameter: timeseq
+text: "Time samples position the function changing of following 8 parameters. Maximum 6 groups"
+type: typein:
+type_desc: ( string: 32 )
+value: "0-500-1000-2000-2000"
+mouse_text: "Enter time samples."
+
+parameter: qmin
+text: "Minimum frequency to process corresponding the time sequence."
+type: typein:
+type_desc: ( string: 32 )
+value: "4-4-4-4-4"
+mouse_text: "Enter minimum frequency to process"
+
+parameter: qminp
+text: "Larger than minimum frequency for qmin taper."
+type: typein:
+type_desc: ( string: 32 )
+value: "8-8-8-8-8"
+mouse_text: "Enter larger than minimum frequency for qmin taper"
+
+parameter: qmaxm
+text: "Less than minimum frequency for qmax taper."
+type: typein:
+type_desc: ( string: 32 )
+value: "80-75-70-65-60"
+mouse_text: "Enter less than maximum frequency for qmax taper"
+
+parameter: qmax
+text: "Maximum frequency to process corresponding the time sequence."
+type: typein:
+type_desc: ( string: 32 )
+value: "85-80-75-70-65"
+mouse_text: "Enter maximum frequency to process"
+
+parameter: resoluI
+text: "Resolution enhancement for inline direction corresponding the time sequence."
+type: typein:
+type_desc: ( string: 32 )
+value: "0.2-0.2-0.15-0.1-0.0"
+mouse_text: "0:without 0~1:resolution enhancement for inline direction."
+
+parameter: stDipI
+text: "Enhancement signal for inline direction."
+type: typein:
+type_desc: ( string: 32 )
+value: "0.2-0.2-0.15-0.1-0.0"
+mouse_text: "0:normal >0: enhancement of stronger dip. From 0 to +1."
+
+parameter: resoluX
+text: "Resolution enhancement for xline direction corresponding the time sequence."
+type: typein:
+type_desc: ( string: 32 )
+value: "0.2-0.2-0.15-0.1-0.0"
+mouse_text: "0:without 0~1:resolution enhancement for xline direction."
+
+parameter: stDipX
+text: "Enhancement signal for xline direction."
+type: typein:
+type_desc: ( string: 32 )
+value: "0.2-0.2-0.15-0.1-0.0"
+mouse_text: "0:normal >0: enhancement of stronger dip. From 0 to +1."
+
+parameter: hiradon
+text: "Multiplier for number of transforms"
+type: typein:
+type_desc: ( float: 7 1.0 2.0 )
+value: 1.0
+mouse_text: "Use this number to increase Radon transform accuracy. This impacts run time significantly.
+Suggested value: 1.0 when highest frequency is less or equal to 70 Hz."
+
+parameter: AmpBa
+text: "Amplitude balancing"
+type: pop_choose:
+type_desc: (
+   ("Yes   " 1 " Amplitude balancing." ) 
+   ("No  " 0 "Not amplitude balancing." ) )
+selected_item:  ("Amplitude balancing" 1 "Performing amplitude balancing." )
+mouse_text: "Amplitude balancing or not." 
+
+parameter: AmpParm
+text: "Amplitude balancing parameter"
+type: typein:
+type_desc: ( float: 7 1.0 nil )
+value: 6.0
+mouse_text: "Amplitude balancing parameter."
+
+parameter: FreBa
+text: "Low frequency balancing"
+type: choose:
+type_desc: (
+   ("no" 0 "no low frequency balancing." )
+   ("yes" 1 "low frequency balancing." ))
+value: 0
+mouse_text: "Low frequency balancing or not."
+plot_label t:
+
+parameter: FreParm
+text: "Low frequency balancing parameter"
+type: typein:
+type_desc: ( float: 7 0.0 2.0 )
+value: 1.0
+mouse_text: "Low frequency balancing parameter."
+
+parameter: OuPut
+text: "CDP order or pstmBin order?"
+type: choose:
+type_desc: (
+   ("cdp" 0 "First sort key: CDP, sencond sort key: pstmBin for output." ) 
+   ("bin" 1 "First sort key: pstmBin, sencond sort key: CDP for output." )) 
+value: 0
+mouse_text: "Choosing CDP or pstmBin for first sort key." 
+plot_label t:
+
+parameter: nbin
+text: "Bin number from input"
+type: typein:
+type_desc: ( int: 7 1 nil )
+value: 3
+mouse_text: "Bin number for each CDP."
+
+exec_data: ("SOCKET_TOOL"
+		("GENERAL"
+                        ("program"         implicit: "vhf60.exe")
+                        ("machine"         implicit: "")
+                        ("DEBUG"           implicit: 0)
+			            ("version"         implicit: "vhf60.menu  12/03/04")
+                        ("sockPort"        implicit: (value 'sockPort))
+                        ("dbaseParm"        implicit: ( if( value 'dbaseParm) 1 0))
+                        ("lmin"        implicit: (value 'lmin))
+                        ("lmax"        implicit: (value 'lmax))
+		            	("xmin"        implicit: (value 'xmin))
+                        ("xmax"        implicit: (value 'xmax))
+                        ("lmin1"        implicit: (value 'lmin1))
+                        ("lmax1"        implicit: (value 'lmax1))
+		            	("xmin1"        implicit: (value 'xmin1))
+                        ("xmax1"        implicit: (value 'xmax1))
+                        ("minCDP"        implicit: (value 'minCDP))
+                        ("maxCDP"        implicit: (value 'maxCDP))
+		            	("minIlin"        implicit: (value 'minIlin))
+                        ("maxIlin"        implicit: (value 'maxIlin))
+		            	("minXlin"        implicit: (value 'minXlin))
+                        ("maxXlin"        implicit: (value 'maxXlin))
+                        ("samples"        implicit: (value 'samples))
+                        ("sampleRate"        implicit: (value 'sampleRate))
+		            	("headers"        implicit: (value 'headers))
+            		    ("tleng"        implicit: (value 'tleng))
+                        ("taper"     implicit: (value 'taper))
+                        ("fxyF"     implicit: (value 'fxyF))
+            		    ("numDesiF"        implicit: (value 'numDesiF))
+                        ("numFilt"     implicit: (value 'numFilt))
+		            	("overlapF"      implicit: (value 'overlapF))
+                        ("radonF"     implicit: (value 'radonF))
+		            	("ixSame"      implicit: (value 'ixSame))
+                        ("method"     implicit: (value 'method))
+            		    ("numDesiI"        implicit: (value 'numDesiI))
+                        ("dipI"     implicit: (value 'dipI))
+		            	("overlapI"      implicit: (value 'overlapI))
+            		    ("numDesiX"        implicit: (value 'numDesiX))
+                        ("dipX"     implicit: (value 'dipX))
+		            	("overlapX"      implicit: (value 'overlapX))
+                        ("timeseq"         implicit: (value 'timeseq))
+                        ("qmin"     implicit: (value 'qmin))
+                        ("qminp"     implicit: (value 'qminp))
+                        ("qmaxm"     implicit: (value 'qmaxm))
+                        ("qmax"     implicit: (value 'qmax))
+                        ("resoluI"     implicit: (value 'resoluI))
+                        ("stDipI"     implicit: (value 'stDipI))
+                        ("resoluX"     implicit: (value 'resoluX))
+                        ("stDipX"     implicit: (value 'stDipX))
+                        ("hiradon"     implicit: (value 'hiradon))
+		            	("AmpBa"      implicit: (value 'AmpBa))
+		            	("AmpParm"      implicit: (value 'AmpParm))
+		            	("FreBa"      implicit: (value 'FreBa))
+		            	("FreParm"      implicit: (value 'FreParm))
+		            	("OuPut"      implicit: (value 'OuPut))
+		            	("nbin"      implicit: (value 'nbin))
+
+		)
+	    )
+
+rules: (
+        (rule1 ( value 'dbaseParm )
+               (progn (do_show 'lmin)
+                      (do_show 'lmax)
+                      (do_show 'xmin)
+                      (do_show 'xmax)
+                      (do_not_show 'lmin1)
+                      (do_not_show 'lmax1)
+                      (do_not_show 'xmin1)
+                      (do_not_show 'xmax1)
+                      (do_not_show 'minCDP)
+                      (do_not_show 'maxCDP)
+                      (do_not_show 'minIlin)
+                      (do_not_show 'maxIlin)
+                      (do_not_show 'minXlin)
+                      (do_not_show 'maxXlin)
+                      (do_not_show 'samples)
+                      (do_not_show 'sampleRate)
+                      (do_not_show 'headers))
+               (progn (do_not_show 'lmin)
+                      (do_not_show 'lmax)
+                      (do_not_show 'xmin)
+                      (do_not_show 'xmax)
+                      (do_show 'lmin1)
+                      (do_show 'lmax1)
+                      (do_show 'xmin1)
+                      (do_show 'xmax1)
+                      (do_show 'minCDP)
+                      (do_show 'maxCDP)
+                      (do_show 'minIlin)
+                      (do_show 'maxIlin)
+                      (do_show 'minXlin)
+                      (do_show 'maxXlin)
+                      (do_show 'samples)
+                      (do_show 'sampleRate)
+                      (do_show 'headers)))
+
+   (rule2 ( = ( value 'fxyF ) 0 )
+               (progn (do_not_show 'numDesiF)
+                      (do_not_show 'numFilt)
+                      (do_not_show 'overlapF)))
+
+   (rule3 ( = ( value 'fxyF ) 1 )
+               (progn (do_show 'numDesiF)
+                      (do_show 'numFilt)
+                      (do_show 'overlapF)))
+
+   (rule4 ( not (= ( value 'radonF ) 3 ))
+               (progn (do_not_show 'ixSame)))
+  
+   (rule5 ( = ( value 'radonF ) 3 )
+               (progn (do_show 'ixSame)))
+
+   (rule6 ( = ( value 'radonF ) 0 ) 
+               (progn (do_not_show 'method)
+                      (do_not_show 'hiradon)))
+
+   (rule7 ( not (= ( value 'radonF ) 0 )) 
+               (progn (do_show 'method)
+                      (do_show 'hiradon)))
+
+   (rule8 ( or (= ( value 'radonF ) 0 ) (= ( value 'radonF ) 2 ))
+               (progn (do_not_show 'numDesiI)
+                      (do_not_show 'dipI)
+                      (do_not_show 'resoluI)
+                      (do_not_show 'stDipI)
+                      (do_not_show 'overlapI)))
+
+   (rule9 ( and (not (= ( value 'radonF ) 0 )) (not (= ( value 'radonF ) 2 )))
+               (progn (do_show 'numDesiI)
+                      (do_show 'dipI)
+                      (do_show 'resoluI)
+                      (do_show 'stDipI)
+                      (do_show 'overlapI)))
+
+   (rule10 ( or (= ( value 'radonF ) 0 ) (= ( value 'radonF ) 1 ) (= ( value 'radonF ) 4 ))
+               (progn (do_not_show 'numDesiX)
+                      (do_not_show 'dipX)
+                      (do_not_show 'resoluX)
+                      (do_not_show 'stDipX)
+                      (do_not_show 'overlapX)))
+
+   (rule11 (= ( value 'radonF ) 2 )
+               (progn (do_show 'numDesiX)
+                      (do_show 'dipX)
+                      (do_show 'resoluX)
+                      (do_show 'stDipX)
+                      (do_show 'overlapX)))
+
+   (rule12 ( and (= ( value 'radonF ) 3 ) (= ( value 'ixSame ) 1 ))
+               (progn (do_not_show 'numDesiX)
+                      (do_not_show 'dipX)
+                      (do_not_show 'resoluX)
+                      (do_not_show 'stDipX)
+                      (do_not_show 'overlapX)))
+
+   (rule13 ( and (= ( value 'radonF ) 3 ) (= ( value 'ixSame ) 0 ))
+               (progn (do_show 'numDesiX)
+                      (do_show 'dipX)
+                      (do_show 'resoluX)
+                      (do_show 'stDipX)
+                      (do_show 'overlapX)))
+
+   (rule14 ( = ( value 'AmpBa ) 0 ) 
+               (progn (do_not_show 'AmpParm)))
+
+   (rule15 ( = ( value 'AmpBa ) 1 ) 
+               (progn (do_show 'AmpParm)))
+
+   (rule16 ( = ( value 'FreBa ) 0 ) 
+               (progn (do_not_show 'FreParm)))
+
+   (rule17 ( = ( value 'FreBa ) 1 ) 
+               (progn (do_show 'FreParm)))
+
+   (rule18 ( = ( value 'OuPut ) 0 ) 
+               (progn (do_show 'nbin)))
+
+   (rule19 ( = ( value 'OuPut ) 1 ) 
+               (progn (do_not_show 'nbin)))
+
+        (rule20 (AND (=(value 'lmin) -9876545 )
+             (=(db_parmget_line "I3Dz") 1))
+             (progn
+             (set_value 'xmin (db_parmget_line "MINXLINz"))
+             (set_value 'xmax (db_parmget_line "MAXXLINz"))
+             (set_value 'lmin (db_parmget_line "MINILINz"))
+             (set_value 'lmax (db_parmget_line "MAXILINz"))))
+
+	    )
+)

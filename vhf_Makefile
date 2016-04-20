@@ -1,0 +1,92 @@
+# -*- Mode:makefile; Mode:font-lock; -*-
+##############################################################################
+# RCS: ProMAX $Id: Makefile 47067 2011-07-07 21:21:54Z Stewart Levin $ $Revision: 47067 $ $Date: 2011-07-07 15:21:54 -0600 (Thu, 07 Jul 2011) $
+##############################################################################
+
+# Standard definitions
+include advance.make
+
+# Insert some source code.
+srcs := \
+fxylinux602_h.c \
+$(newsrcs)
+
+# Where object files will go and where source code is.
+objdir := objexedir
+srcdir := srcexedir
+
+# This is the name of our parent directory.
+parentdir := vhf
+
+# Defining the include file holding amakedepend dependencies.
+ifneq (,$(findstring linux,$(machtype)))
+ifeq ($(intel),yes)
+depend_include := $(parentdir)_icc.depend
+else
+depend_include := $(parentdir)_gcc.depend
+endif
+else
+depend_include := $(parentdir).depend
+endif
+
+# Figure out user and actual srcs and objs.
+uobjs := $(define_uobjs)
+usrcs := $(define_usrcs)
+aobjs := $(define_aobjs)
+
+# Set exe to the destination executable name.
+exe := $(exedir)/vhf60.exe
+
+# Libraries needed for linking.
+libs := $(AGCLITELIBS)
+
+# Misc definitions.
+
+# The top level rule.
+all :
+	$(UPDATE_LIBRARIES)
+	$(MAKE) $(exe)
+
+# A general rule for creating a depend include file.
+depend: $(usrcs)
+	$(AMAKEDEPEND)
+
+# Backup and link the executable.
+$(exe) : $(uobjs) $(libs)
+	$(MAKETARGETDIR)
+	$(CXX_LINK) $(XMLIBS) $(CXXLIBS) $(SYSXXLIBS) || \
+	$(BACKUP_ON_ERROR)
+
+# Other rules.
+
+# Implicit rule to compile C++ source code.
+$(objexedir)/$(parentdir)/%.o : %.$(CXX_SUF)
+	$(CXX_COMPILE)
+
+# Implicit rule to compile ANSI C source code.
+$(objexedir)/$(parentdir)/%.o : %.c
+	$(ANSIC_COMPILE)
+
+# Implicit rule to compile FORTRAN source code.
+$(objexedir)/$(parentdir)/%.o : %.f
+	$(F_COMPILE)
+
+# Generic rules to clean up.
+cleanexe:
+	@echo "Removing: $(exe)"; \
+	/bin/rm -f $(exe) 2> /dev/null
+
+cleanobjs:
+	@echo "Removing: $(objexedir)/$(parentdir)"; \
+	/bin/rm -rf $(objexedir)/$(parentdir) 2> /dev/null
+
+clean: cleanexe cleanobjs
+
+# Include the dependency include file if it exists.
+ifneq ($(wildcard $(depend_include)),)
+   include $(depend_include)
+endif
+
+# be quiet
+.SILENT:
+.PHONY: all depend cleanexe cleanobjs clean
